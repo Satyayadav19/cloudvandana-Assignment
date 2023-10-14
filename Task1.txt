@@ -1,0 +1,60 @@
+import java.util.*;
+
+public class Task1{
+	public static int romanToInteger(String s) {
+        int res = 0;
+        int prevValue = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char num = s.charAt(i);
+            int value = getRomanValue(num);
+            if (value < prevValue) {
+                res -= value;
+            } else {
+                res += value;
+            }
+            prevValue = value;
+        }
+        return res;
+    }
+	public static int getRomanValue(char numeral) {
+        switch (numeral) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    }
+	 public static boolean isPangram(String s) {
+	        s = s.replaceAll(" ", ""); 
+	        for (char c = 'A'; c <= 'Z'; c++) {
+	            if (s.indexOf(c) == -1) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+    public static void main(String[] args) {
+        java.util.List<?> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        Collections.shuffle(array);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a Roman numeral: ");
+        String romanNum = scanner.nextLine().toUpperCase();
+        int integerNum = romanToInteger(romanNum);
+        boolean isPangram = isPangram(romanNum);
+        System.out.println("Shuffled array: " + array);
+        System.out.println("Integer value of the Roman numeral: " + integerNum);
+        System.out.println(isPangram ? "The input is a pangram." : "The input is not a pangram.");
+    }  
+}

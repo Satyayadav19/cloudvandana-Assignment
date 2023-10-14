@@ -1,0 +1,23 @@
+function reverseWords(s) {
+    const words = s.split(' ');
+    const reverseWords = words.map(word => reverseword(word));
+    const reversedSentence = reverseWords.join(' ');
+
+    return reversedSentence;
+}
+
+function reverseword(word) {
+    return word.split('').reverse().join('');
+}
+function sort(s) {
+    const words = s.split(' ');
+    const sortedWords = words.sort((a, b) => b.localeCompare(a));
+    const sortedSentence = sortedWords.join(' ');
+    return sortedSentence;
+}
+const input = prompt('Enter a sentence:');
+const reversedSentence = reverseWords(input);
+console.log('Reversed sentence: ' + reversedSentence);
+const result = sort(reversedSentence);
+console.log('Sentence sorted in descending order: ' + result);
+
